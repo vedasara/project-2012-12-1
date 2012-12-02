@@ -12,13 +12,14 @@ describe "track system" do
   	@system.stub(:date).and_return(@fake_date)
 	end
 
-  it "should extract start time" do
+  it "should extract time when command had run" do
     @system.start_time.should == "13:06:08"
   end
 
   it "should extract up time" do
     @system.up_time.should == "1:29"
-
+  end
+  
 	it "should extract average load" do
 		@system.load_average.should == "0.03"
 	end
