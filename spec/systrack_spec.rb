@@ -10,7 +10,12 @@ describe "track system" do
 	before :each do
   	@system.stub(:uptime).and_return(@fake_uptime)
   	@system.stub(:date).and_return(@fake_date)
-  	end
+	end
+
+  it "should extract start time" do
+    @system.start_time.should == "13:06:08"
+  end
+
 
 	it "should extract average load" do
 		@system.load_average.should == "0.03"
