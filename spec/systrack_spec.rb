@@ -16,6 +16,8 @@ describe "track system" do
     @system.start_time.should == "13:06:08"
   end
 
+  it "should extract up time" do
+    @system.up_time.should == "1:29"
 
 	it "should extract average load" do
 		@system.load_average.should == "0.03"
