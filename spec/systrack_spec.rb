@@ -17,7 +17,7 @@ describe "track system" do
   end
 
   it "should extract up time" do
-    @system.up_time.should == "1:29"
+    @system.system_up.should == "1:29"
   end
   
 	it "should extract average load" do

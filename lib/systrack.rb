@@ -1,13 +1,26 @@
 class SystemTrack
 	def load_average
-		first_minute = uptime.match(/(?<=average..).+?(?=,)/); first_minute[0]
+		first_minute = uptime.match(/(?<=average..).+?(?=,)/).to_s
 	end
 
 	def uptime
 		@uptime = `uptime`
 	end
 
-	def extract_date
-		date = Time.new.to_s.match(/^\S*/); date[0]
+	def date
+		Time.now
 	end
+
+	def extract_date
+		date.match(/^\S+/).to_s
+	end
+
+	def start_time
+		time = uptime.match(/^\S*/).to_s
+	end
+
+	def system_up
+		up = uptime.match(/(?<=up..).+?(?=,)/).to_s
+	end
+
 end
