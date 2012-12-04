@@ -1,4 +1,16 @@
+require 'mongoid'
+
+	Mongoid.configure do |config|
+  		config.master = Mongo::Connection.from_uri("mongodb://localhost:27017").db('system_track')
+	end
+
+
 class SystemTrack
+
+
+	include Mongoid::Document
+	field :command_start_time
+
 	def load_average
 		first_minute = uptime.match(/(?<=average..).+?(?=,)/).to_s
 	end
@@ -22,5 +34,6 @@ class SystemTrack
 	def system_up
 		up = uptime.match(/(?<=up..).+?(?=,)/).to_s
 	end
+
 
 end

@@ -1,7 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'rspec', :version => 2, :cli => "--drb --color" do
+guard 'rspec', :cli => "--drb --color", :version => 2, :all_on_start => false, :notification => false, :bundler => false, :all_after_pass => false do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -22,3 +22,9 @@ guard 'rspec', :version => 2, :cli => "--drb --color" do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end
 
+
+guard 'bundler' do
+  watch('Gemfile')
+  # Uncomment next line if Gemfile contain `gemspec' command
+  # watch(/^.+\.gemspec/)
+end
