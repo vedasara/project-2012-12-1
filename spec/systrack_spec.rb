@@ -11,7 +11,7 @@ describe "track system" do
 	before :each do
   	@system.stub(:uptime).and_return(@fake_uptime)
   	@system.stub(:date).and_return(@fake_date)
-    @system.stub(:boot).and_return(@fake_boot)
+    @system.stub(:who).and_return(@fake_boot)
 	end
 
   describe "collecting data" do

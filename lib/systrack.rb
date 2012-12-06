@@ -35,8 +35,12 @@ class SystemTrack
 		up = uptime.match(/(?<=up..).+?(?=,)/).to_s
 	end
 
+	def who
+		`who -b`
+	end
+
 	def boot_time 
-		boot_array = `who -b`.split; boot_array[2].to_s + " " + boot_array[3].to_s
+		boot_array = who.split; boot_array[2].to_s + " " + boot_array[3].to_s
 	end
 
 
